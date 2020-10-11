@@ -6,7 +6,7 @@ class ServerInfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command('general-info')
     async def general(self, ctx):
         name = ctx.guild.name
         icon = ctx.guild.icon_url
@@ -34,8 +34,6 @@ class ServerInfo(commands.Cog):
     @commands.command()
     async def members(self, ctx, *, type:str = None):
         image = 'https://media3.giphy.com/media/ZE5DmCqNMr3yDXq1Zu/source.gif'
-
-
 
         real_members = discord.Embed(
             title='Real Members:',

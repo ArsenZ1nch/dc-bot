@@ -13,11 +13,11 @@ class Moderator(commands.Cog):
             return
 
         if user_mention == self.bot.user:
-            await ctx.send('Sorry, but an error occurred! Kick me here: <https://youtu.be/dQw4w9WgXcQ>')
-
-            if not ctx.author.dm_channel:
-                await ctx.author.create_dm()
-            await ctx.author.send("Idiot you cant kick a god himself! Dumb mortal creature!")
+            bait_embed = discord.Embed(
+                title='I can\'t ban myself!',
+                description='You can remove me from this server ***[HERE](https://youtu.be/dQw4w9WgXcQ)***'
+            )
+            await ctx.send(embed=bait_embed)
             return
 
         if not ctx.author.guild_permissions.ban_members:
@@ -27,6 +27,7 @@ class Moderator(commands.Cog):
         if user_mention.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner or user_mention == ctx.guild.owner:
             await ctx.send("You are not allowed to kick this user")
             return
+
 
         kick_embed = discord.Embed(
             title='Kick Report',
@@ -42,13 +43,13 @@ class Moderator(commands.Cog):
         kick_embed.add_field(name='Reason', value=reason or 'Unknown')
         kick_embed.set_footer(text=f'Kick issued by {ctx.author}')
 
-        if not user_mention.dm_channel:
-            await ctx.author.create_dm()
+        dm_kick_embed = kick_embed.copy()
+        dm_kick_embed.description = f'You have been **kicked** from **{ctx.guild}!**'
 
-        await user_mention.send(f'You were kicked from **{ctx.guild}** for ***{reason or "Giving Us Up"}***!')
-        await user_mention.send(embed=kick_embed)
+        await user_mention.send(embed=dm_kick_embed)
         await ctx.guild.kick(user=user_mention, reason=reason)
-        await ctx.send(context='Oof', embed=kick_embed)
+        await ctx.send(embed=kick_embed)
+
 
     @commands.command()
     async def ban(self, ctx, user_mention:discord.Member, *, reason:str=None):
@@ -57,20 +58,21 @@ class Moderator(commands.Cog):
             return
 
         if user_mention == self.bot.user:
-            await ctx.send('Sorry, but an error occurred! Ban me here: <https://youtu.be/dQw4w9WgXcQ>')
-
-            if not ctx.author.dm_channel:
-                await ctx.author.create_dm()
-            await ctx.author.send("Idiot you cant ban a god himself! Dumb mortal creature!")
+            bait_embed = discord.Embed(
+                title='I can\'t ban myself!',
+                description='You can remove me from this server ***[HERE](https://youtu.be/dQw4w9WgXcQ)***'
+            )
+            await ctx.send(embed=bait_embed)
             return
 
         if not ctx.author.guild_permissions.ban_members:
-            await ctx.send(f"You are not allowed to ban")
+            await ctx.send(f"You are not allowed to ban!")
             return
 
         if user_mention.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner or user_mention == ctx.guild.owner:
-            await ctx.send("You are not allowed to ban this user")
+            await ctx.send("You are not allowed to ban this user!")
             return
+
 
         ban_embed = discord.Embed(
             title='Ban Report',
@@ -86,13 +88,13 @@ class Moderator(commands.Cog):
         ban_embed.add_field(name='Reason', value=reason or 'Unknown')
         ban_embed.set_footer(text=f'Ban issued by {ctx.author}')
 
-        if not user_mention.dm_channel:
-            await ctx.author.create_dm()
+        dm_ban_embed = ban_embed.copy()
+        dm_ban_embed.description = f'You have been **banned** from **{ctx.guild}!**'
 
-        await user_mention.send(f'You were banned from **{ctx.guild}** for ***{reason or "Giving Us Up"}***!')
         await user_mention.send(embed=ban_embed)
         await ctx.guild.ban(user=user_mention, reason=reason, delete_message_days=0)
         await ctx.send(embed=ban_embed)
+
 
     @commands.command()
     async def unban(self, ctx, user_mention:str, *, reason:str=None):
@@ -118,6 +120,12 @@ class Moderator(commands.Cog):
                 unban_embed.set_footer(text=f'Unbanned by {ctx.author}')
 
                 await ctx.send(embed=unban_embed)
+
+                try:
+                    invitation = await ctx.channel.create_invite(max_age=0, max_uses=1)
+                    await ban.user.send(invitation)
+                except discord.Forbidden:
+                    await invitation.delete()
                 return
 
         await ctx.send('No such banned user')
