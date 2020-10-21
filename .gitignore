@@ -1,2 +1,7 @@
-**/__pycache__
-venv
+.idea
+Include
+Lib
+Scripts
+.gitignore
+pyvenv.cfg
+extensions/__pycache__

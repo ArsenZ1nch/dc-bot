@@ -11,7 +11,7 @@ class ServerInfo(commands.Cog):
         name = ctx.guild.name
         icon = ctx.guild.icon_url
         gif_url = 'https://media3.giphy.com/media/ZE5DmCqNMr3yDXq1Zu/source.gif'
-        owner = ctx.guild.owner.display_name
+        owner = ctx.guild.owner
         member_count = ctx.guild.member_count
         channel_count = len(ctx.guild.text_channels) + len(ctx.guild.voice_channels)
         region = ctx.guild.region.name

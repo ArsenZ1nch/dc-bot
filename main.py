@@ -2,12 +2,13 @@ import discord
 from discord.ext import commands
 
 PREFIX = '!'
-PREFIX_LENGTH = len(PREFIX)
+INTENTS = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=PREFIX)
+bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
+
+bot.load_extension('extensions.reaction_role')
 bot.load_extension('extensions.moderator')
 bot.load_extension('extensions.info')
-bot.load_extension('extensions.reaction_role')
 bot.load_extension('extensions.moderator_event')
 
 
@@ -25,4 +26,4 @@ async def on_disconnect():
         print('Connected to Discord!')
 
 
-bot.run('NzQ2MDcxNzQ5NzU3NzYzNjk2.Xz6_dg.yqKgAdT_zWe6TZsJDn9GyNj8BHg')
+bot.run('NzQ2MDcxNzQ5NzU3NzYzNjk2.Xz6_dg.tKsCGeWy2X9iiVkVGbhIU5oqAnw')

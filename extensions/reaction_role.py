@@ -1,4 +1,4 @@
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 
 class ReactionRole(commands.Cog):
@@ -10,6 +10,7 @@ class ReactionRole(commands.Cog):
         async def new_reaction_role(channel_id, message_text, reaction_roles_dict):
             channel = self.bot.get_channel(channel_id)
 
+            reaction_role_message = None
             async for message in channel.history(limit=1):
                 if message.content != message_text:
                     reaction_role_message = await channel.send(message_text)
@@ -35,6 +36,12 @@ class ReactionRole(commands.Cog):
 
                             await user.add_roles(role)
 
+            if not reaction_role_message:
+                reaction_role_message = await channel.send(message_text)
+
+                for emoji, role in reaction_roles_dict.items():
+                    await reaction_role_message.add_reaction(emoji)
+
             @self.bot.event
             async def on_raw_reaction_add(payload):
                 if payload.member == self.bot.user:
@@ -58,7 +65,7 @@ class ReactionRole(commands.Cog):
                     return
 
                 guild = self.bot.get_guild(payload.guild_id)
-                member = guild.get_member(payload.user_id)
+                member = await guild.fetch_member(payload.user_id)
 
                 for emoji, role in reaction_roles_dict.items():
                     if payload.emoji.name != emoji:
@@ -74,11 +81,17 @@ class ReactionRole(commands.Cog):
             '🎥': bot_spectator
         }
 
-        self.bot.loop.create_task(
-            new_reaction_role(channel_id=751735282260246529, message_text=message,
-                                   reaction_roles_dict=reaction_roles_dict)
-        )
+        # print(self.bot.loop)
+        # print('About to create')
+        # self.bot.loop.create_task(
+        #     new_reaction_role(channel_id=751735282260246529, message_text=message,
+        #                            reaction_roles_dict=reaction_roles_dict)
+        # )
+        # print('Created')
+        # print(self.bot.loop)
 
+        await new_reaction_role(channel_id=751735282260246529, message_text=message,
+                          reaction_roles_dict=reaction_roles_dict)
 
 def setup(bot):
     bot.add_cog(ReactionRole(bot))
