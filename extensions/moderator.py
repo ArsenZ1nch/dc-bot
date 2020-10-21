@@ -15,7 +15,7 @@ class Moderator(commands.Cog):
         if user_mention == self.bot.user:
             bait_embed = discord.Embed(
                 title='I can\'t ban myself!',
-                description='You can remove me from this server ***[HERE](https://youtu.be/dQw4w9WgXcQ)***'
+                description='You can remove me from this server ***[HERE](https://arsenzinch.pythonanywhere.com/)***'
             )
             await ctx.send(embed=bait_embed)
             return
@@ -60,7 +60,7 @@ class Moderator(commands.Cog):
         if user_mention == self.bot.user:
             bait_embed = discord.Embed(
                 title='I can\'t ban myself!',
-                description='You can remove me from this server ***[HERE](https://youtu.be/dQw4w9WgXcQ)***'
+                description='You can remove me from this server ***[HERE](https://arsenzinch.pythonanywhere.com/)***'
             )
             await ctx.send(embed=bait_embed)
             return
