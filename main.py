@@ -26,4 +26,4 @@ async def on_disconnect():
         print('Connected to Discord!')
 
 
-bot.run('NzQ2MDcxNzQ5NzU3NzYzNjk2.Xz6_dg.tKsCGeWy2X9iiVkVGbhIU5oqAnw')
+bot.run('NzQ2MDcxNzQ5NzU3NzYzNjk2.Xz6_dg.CIMfWbn2iMpyG-0-6kGez1eW1e8')
