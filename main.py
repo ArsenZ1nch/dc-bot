@@ -1,15 +1,17 @@
 import discord
 from discord.ext import commands
+import os
 
 PREFIX = '!'
 INTENTS = discord.Intents.all()
 
 bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
 
-bot.load_extension('extensions.reaction_role')
-bot.load_extension('extensions.moderator')
-bot.load_extension('extensions.info')
-bot.load_extension('extensions.moderator_event')
+for file in os.listdir("extensions"):
+    if not file.endswith(".py"):
+        continue
+    noExt_file = os.path.splitext(file)[0]
+    bot.load_extension(f'extensions.{noExt_file}')
 
 
 @bot.event

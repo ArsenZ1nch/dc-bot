@@ -18,7 +18,7 @@ class ServerInfo(commands.Cog):
 
         server_embed = discord.Embed(
             title=f'"{name}" Server Info:',
-            description='Bot Test Server',
+            description=ctx.guild.description,
             color=discord.Color.from_rgb(19, 214, 113)
         )
 

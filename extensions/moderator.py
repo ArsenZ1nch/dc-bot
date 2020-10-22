@@ -14,7 +14,7 @@ class Moderator(commands.Cog):
 
         if user_mention == self.bot.user:
             bait_embed = discord.Embed(
-                title='I can\'t ban myself!',
+                title='I can\'t kick myself!',
                 description='You can remove me from this server ***[HERE](https://arsenzinch.pythonanywhere.com/)***'
             )
             await ctx.send(embed=bait_embed)
