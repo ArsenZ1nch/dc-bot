@@ -6,7 +6,12 @@ class ServerInfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send('pong')
+
     @commands.command('general-info')
+    @commands.guild_only()
     async def general(self, ctx):
         name = ctx.guild.name
         icon = ctx.guild.icon_url
@@ -32,6 +37,7 @@ class ServerInfo(commands.Cog):
         await ctx.send(embed=server_embed)
 
     @commands.command()
+    @commands.guild_only()
     async def members(self, ctx, *, type:str = None):
         image = 'https://media3.giphy.com/media/ZE5DmCqNMr3yDXq1Zu/source.gif'
 

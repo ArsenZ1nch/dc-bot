@@ -11,10 +11,10 @@ class ReactionRole(commands.Cog):
             channel = self.bot.get_channel(channel_id)
 
             reaction_role_message = None
+
             async for message in channel.history(limit=1):
                 if message.content != message_text:
                     reaction_role_message = await channel.send(message_text)
-
                     for emoji, role in reaction_roles_dict.items():
                         await reaction_role_message.add_reaction(emoji)
                     break
@@ -25,11 +25,9 @@ class ReactionRole(commands.Cog):
                     async for user in reaction.users():
                         if user == self.bot.user:
                             continue
-
                         for emoji, role in reaction_roles_dict.items():
                             if reaction.emoji != emoji:
                                 continue
-
                             if user not in channel.guild.members:
                                 await reaction_role_message.remove_reaction(emoji, user)
                                 continue
@@ -38,7 +36,6 @@ class ReactionRole(commands.Cog):
 
             if not reaction_role_message:
                 reaction_role_message = await channel.send(message_text)
-
                 for emoji, role in reaction_roles_dict.items():
                     await reaction_role_message.add_reaction(emoji)
 

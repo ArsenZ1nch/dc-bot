@@ -1,11 +1,20 @@
 import discord
 from discord.ext import commands
+import json
 import os
 
-PREFIX = '!'
+with open("database//database.json") as database:
+    bot_guilds = json.load(database)["Guilds"]
+
+
+async def prefix_definer(bot, message):
+    prefix = bot_guilds[str(message.guild.id)]['Prefix'] if message.guild else '!'
+    return prefix
+
+
 INTENTS = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
+bot = commands.Bot(command_prefix=prefix_definer, intents=INTENTS)
 
 for file in os.listdir("extensions"):
     if not file.endswith(".py"):

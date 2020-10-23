@@ -2,6 +2,7 @@
 Include
 Lib
 Scripts
-.gitignore
 pyvenv.cfg
 extensions/__pycache__
+checks
+database/guild_manager.py

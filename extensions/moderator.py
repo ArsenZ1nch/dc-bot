@@ -6,8 +6,10 @@ class Moderator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.command()
-    async def kick(self, ctx, user_mention:discord.Member, *, reason:str=None):
+    @commands.guild_only()
+    async def kick(self, ctx, user_mention: discord.Member, *, reason: str = None):
         if user_mention == ctx.author:
             await ctx.send("You can't kick yourself")
             return
@@ -52,7 +54,8 @@ class Moderator(commands.Cog):
 
 
     @commands.command()
-    async def ban(self, ctx, user_mention:discord.Member, *, reason:str=None):
+    @commands.guild_only()
+    async def ban(self, ctx, user_mention: discord.Member, *, reason: str = None):
         if user_mention == ctx.author:
             await ctx.send("You can't ban yourself")
             return
@@ -97,7 +100,8 @@ class Moderator(commands.Cog):
 
 
     @commands.command()
-    async def unban(self, ctx, user_mention:str, *, reason:str=None):
+    @commands.guild_only()
+    async def unban(self, ctx, user_mention: str, *, reason: str = None):
         if not ctx.author.guild_permissions.ban_members:
             await ctx.send(f"You are not allowed to unban")
             return
