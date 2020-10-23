@@ -8,7 +8,7 @@ with open("database//database.json") as database:
 
 
 async def prefix_definer(bot, message):
-    prefix = bot_guilds[str(message.guild.id)]['Prefix'] if str(message.guild.id) in bot_guilds.keys() else '!'
+    prefix = bot_guilds[str(message.guild.id)]['Prefix'] if str(message.guild.id) in bot_guilds.keys() and message.guild else '!'
     return prefix
 
 
