@@ -1,8 +1,4 @@
 .idea
-Include
-Lib
-Scripts
-pyvenv.cfg
-extensions/__pycache__
+**/__pycache__
 checks
-database/guild_manager.py
+venv

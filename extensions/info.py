@@ -8,7 +8,22 @@ class ServerInfo(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send('pong')
+        ping = ctx.message
+        pong = await ctx.send('pong')
+
+        time1 = ping.created_at
+        time2 = pong.created_at
+        response_delta = int((time2 - time1).total_seconds()*1000)
+        await pong.edit(content=f'It took `{response_delta} ms` for me to respond')
+
+        if response_delta > 1000:
+            print(f'Response Time Warning! {response_delta} ms response time detected on {ctx.guild or ctx.channel}!')
+            await ctx.send("**Warning!** Response time of over **1** second detected! Please stop spamming commands, if you are doing so!")
+
+            appinfo = await self.bot.application_info()
+            await appinfo.owner.send(f'**Response Time Warning!** `{response_delta}` ms response time detected on `{ctx.guild or ctx.channel}`!')
+
+
 
     @commands.command('general-info')
     @commands.guild_only()
