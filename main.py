@@ -28,7 +28,7 @@ async def on_message(message):
                 
     if message.content.startswith('$'):
         print(message.content[-18:-1])
-        arc = await client.fetch_user(int(message.content[-18:-1]))
+        arc = await client.fetch_user(int(message.content[-18:]))
         return await arc.send(message.content[1:-19])
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
