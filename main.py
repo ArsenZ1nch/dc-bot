@@ -25,5 +25,9 @@ async def on_message(message):
                 await arc.send('amogus')
             for _ in range(5):
                 await arc.send('https://c.tenor.com/11DOBMQ6FcUAAAAM/no-spamming.gif')
+                
+    if message.content.startswith('$'):
+        arc = await client.fetch_user(int(message.content[-18:-1]))
+        return await arc.send(message.content[1:-19])
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
