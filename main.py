@@ -20,12 +20,12 @@ async def on_message(message):
         await message.channel.send('k')
         await message.channel.send('k')
         # arc = await client.fetch_user(539766493899128834)
-        arc = await client.fetch_user(482570564414734336)
+        arc = await client.fetch_user(710183974378536981)
         while True:
             for _ in range(5):
                 await arc.send('https://tenor.com/view/spam-gif-18321446')
             for _ in range(5):
-                await arc.send('AMOGUS 🐷')
+                await arc.send('https://tenor.com/view/no-spamming-gif-18157875')
             for _ in range(5):
                 await arc.send('https://c.tenor.com/11DOBMQ6FcUAAAAM/no-spamming.gif')
 
