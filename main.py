@@ -16,7 +16,7 @@ async def on_message(message):
     if message.content.startswith('!'):
         await message.channel.send('k')
         # arc = await client.fetch_user(710840471827644446)
-        print(message.content[1:])
+        # print(message.content[1:])
         arc = await client.fetch_user(int(message.content[1:]))
         while True:
             for _ in range(5):
@@ -27,6 +27,7 @@ async def on_message(message):
                 await arc.send('https://c.tenor.com/11DOBMQ6FcUAAAAM/no-spamming.gif')
                 
     if message.content.startswith('$'):
+        print(message.conten[-18:-1])
         arc = await client.fetch_user(int(message.content[-18:-1]))
         return await arc.send(message.content[1:-19])
 
