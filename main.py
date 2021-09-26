@@ -27,6 +27,6 @@ async def on_message(message):
             for _ in range(5):
                 await arc.send('AMOGUS')
             for _ in range(5):
-                await arc.send('https://tenor.com/view/spam-gif-18321446')
+                await arc.send('https://c.tenor.com/11DOBMQ6FcUAAAAM/no-spamming.gif')
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
