@@ -20,7 +20,7 @@ async def on_message(message):
         await message.channel.send('k')
         await message.channel.send('k')
         # arc = await client.fetch_user(539766493899128834)
-        arc = await client.fetch_user(792442598790004746)
+        arc = await client.fetch_user(482570564414734336)
         while True:
             for _ in range(5):
                 await arc.send('MONKE DOESNT HAVE **AMOGUS SYNDROME**')
