@@ -16,6 +16,7 @@ async def on_message(message):
     if message.content.startswith('!'):
         await message.channel.send('k')
         # arc = await client.fetch_user(710840471827644446)
+        print(message.content[1:])
         arc = await client.fetch_user(int(message.content[1:]))
         while True:
             for _ in range(5):
