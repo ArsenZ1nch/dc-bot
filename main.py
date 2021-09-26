@@ -16,7 +16,7 @@ async def on_message(message):
     if message.content.startswith('!start'):
         await message.channel.send('k')
         # arc = await client.fetch_user(710183974378536981)
-        arc = await client.fetch_user(809467185764106272)
+        arc = await client.fetch_user(792442598790004746)
         while True:
             for _ in range(5):
                 await arc.send('https://tenor.com/view/spam-gif-18321446')
