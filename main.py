@@ -11,7 +11,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    print(f"{message.author}: message")
+    print(f"{message.author}: {message.text}")
 
     if message.content.startswith('!start'):
         await message.channel.send('k')
