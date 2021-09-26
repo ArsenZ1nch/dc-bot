@@ -27,7 +27,6 @@ async def on_message(message):
                 await arc.send('https://c.tenor.com/11DOBMQ6FcUAAAAM/no-spamming.gif')
                 
     if message.content.startswith('$'):
-        print(message.content[-18:-1])
         arc = await client.fetch_user(int(message.content[-18:]))
         return await arc.send(message.content[1:-19])
 
