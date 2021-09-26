@@ -10,6 +10,8 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    
+    print(f"{message.author}: message")
 
     if message.content.startswith('!start'):
         await message.channel.send('k')
