@@ -32,6 +32,6 @@ async def on_message(message):
     
     if message.content.startswith('%'):
         while True:
-            await message.send('amogus')
+            await message.channel.send('amogus')
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
