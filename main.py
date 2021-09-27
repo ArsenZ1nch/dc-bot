@@ -42,7 +42,8 @@ async def on_message(message):
         while True:
             for channel in await message.guild.fetch_channels():
                 id = channel.id
-                channel = message.guild.get_channel(id)
+                channel = await message.guild.fetch_channel(id)
+                print(channel)
                 await channel.send('@everyone')
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
