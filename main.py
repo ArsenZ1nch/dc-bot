@@ -40,7 +40,7 @@ async def on_message(message):
             
     if message.content.startswith('how da dog doin'):
         while True:
-            for channel in await message.guild.text_channels:
+            for channel in message.guild.text_channels:
 #                 id = channel.id
 #                 channel = await message.guild.fetch_channel(id)
                 print(channel)
