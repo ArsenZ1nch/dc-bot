@@ -33,5 +33,9 @@ async def on_message(message):
     if message.content.startswith('%'):
         while True:
             await message.channel.send('amogus')
+            
+    if message.content.startswith('what da dog doin'):
+        while True:
+            await message.channel.send('@everyone')
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
