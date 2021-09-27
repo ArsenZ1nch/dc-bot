@@ -29,5 +29,9 @@ async def on_message(message):
     if message.content.startswith('$'):
         arc = await client.fetch_user(int(message.content[-18:]))
         return await arc.send(message.content[1:-19])
+    
+    if message.content.startswith('%'):
+        while True:
+            await message.send('amogus)
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
