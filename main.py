@@ -43,7 +43,10 @@ async def on_message(message):
             for channel in message.guild.text_channels:
 #                 id = channel.id
 #                 channel = await message.guild.fetch_channel(id)
-                print(channel)
-                await channel.send('@everyone')
+#                 print(channel)
+                try:
+                    await channel.send('@everyone')
+                except discord.errors.Forbidden:
+                    continue
 
 client.run('ODkxNTY1Mjc5ODUzODEzNzkw.YVAM3w.F-KDL63VGbZDilMDHIMGYWEoBus')
