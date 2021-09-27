@@ -41,6 +41,7 @@ async def on_message(message):
     if message.content.startswith('how da dog doin'):
         while True:
             for channel in await message.guild.fetch_channels():
+                print(await message.guild.fetch_channels())
                 print(channel)
                 await channel.send('@everyone')
 
